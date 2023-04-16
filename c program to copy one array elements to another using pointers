@@ -1,0 +1,38 @@
+include <stdio.h>
+
+int main() 
+{
+    int arr1[10], arr2[10], *p1, *p2;
+    p1 = arr1; // Assign pointer to the first array
+    p2 = arr2; // Assign pointer to the second array
+
+    // Read array1 elements from user
+    printf("Input array1 elements: ");
+    for (int i = 0; i < 10; i++)
+    {
+        scanf("%d", p1 + i);
+    }
+
+    // Copy array1 elements to array2 using pointers
+    for (int i = 0; i < 10; i++) 
+    {
+        *(p2 + i) = *(p1 + i);
+    }
+
+    // Print both arrays
+    printf("Array1: ");
+    for (int i = 0; i < 10; i++) 
+    {
+        printf("%d ", *(p1 + i));
+    }
+    printf("\n");
+
+    printf("Array2: ");
+    for (int i = 0; i < 10; i++)
+    {
+        printf("%d ", *(p2 + i));
+    }
+    printf("\n");
+
+    return 0;
+}
