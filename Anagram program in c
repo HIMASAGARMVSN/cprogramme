@@ -1,0 +1,52 @@
+include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[100], str2[100];
+    int freq1[256] = {0}, freq2[256] = {0};
+    int i, len;
+
+    printf("Enter first string: ");
+    fgets(str1, 100, stdin);
+    printf("Enter second string: ");
+    fgets(str2, 100, stdin);
+
+    len = strlen(str1);
+
+    // Removing newline character from the strings
+    if(str1[len-1] == '\n')
+        str1[len-1] = '\0';
+
+    len = strlen(str2);
+
+    if(str2[len-1] == '\n')
+        str2[len-1] = '\0';
+
+    // Checking length of both strings
+    if(strlen(str1) != strlen(str2))
+    {
+        printf("%s and %s are not anagrams.\n", str1, str2);
+        return 0;
+    }
+
+    // Storing frequency of each character in the strings
+    for(i=0; str1[i]!='\0'; i++)
+        freq1[(int)str1[i]]++;
+
+    for(i=0; str2[i]!='\0'; i++)
+        freq2[(int)str2[i]]++;
+
+    // Comparing the frequencies of characters
+    for(i=0; i<256; i++)
+    {
+        if(freq1[i] != freq2[i])
+        {
+            printf("%s and %s are not anagrams.\n", str1, str2);
+            return 0;
+        }
+    }
+
+    printf("%s and %s are anagrams.\n", str1, str2);
+    return 0;
+}
